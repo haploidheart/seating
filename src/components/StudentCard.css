@@ -1,0 +1,120 @@
+.student-card {
+  width: 100%;
+  height: 100%;
+  padding: 4px; /* increased padding for better readability */
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10%; /* absolute minimum */
+  padding-left: 0;
+}
+
+.card-main {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
+  padding-right: 0;
+  height: 100%;
+  gap: 0;
+}
+
+.number-box {
+  width: 14px; /* even smaller */
+  height: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7pt; /* smaller font for smaller box */
+  font-weight: bold;
+  margin-bottom: 1px;
+  padding: 0;
+}
+
+.female .number-box {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+.reading-vertical,
+.surname-vertical,
+.firstname-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 0.9; /* shrink line width */
+}
+
+.reading-vertical {
+  font-size: 7pt;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0;
+}
+
+.surname-vertical {
+  font-size: 18pt;
+  font-weight: 700;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.firstname-vertical {
+  font-size: 8pt;
+  font-weight: 500;
+  margin-top: auto;
+  padding-bottom: 1px;
+  letter-spacing: 0;
+}
+
+/* Print optimizations */
+@media print {
+  .student-card {
+    background: white !important;
+    border: 1px solid black !important;
+    color: black !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0;
+  }
+  
+  .number-box {
+    border: 1px solid black;
+    color: black;
+  }
+  
+  .female .number-box {
+    background-color: #ff0000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color: white !important;
+  }
+  
+  .reading-vertical {
+    color: black;
+  }
+  
+  .surname-vertical {
+    font-size: 18pt;
+  }
+  
+  .firstname-vertical,
+  .reading-vertical,
+  .number-box {
+    font-size: 8pt;
+  }
+}
