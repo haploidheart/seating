@@ -24,31 +24,35 @@
 .empty-placeholder {
   width: 100%;
   height: 100%;
-  border: 1px dashed rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
 }
 
 .forced-empty .empty-placeholder {
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.15);
+  background: transparent;
+  border: none;
 }
 
 @media print {
   .seat-grid {
-    gap: 4mm; /* increased from 1mm */
+    gap: 2mm; /* reduced from 4mm to save space */
     max-width: none;
   }
   .seat-slot {
     cursor: default;
+    aspect-ratio: 1 / 1.35; /* slightly shorter to fit vertically */
   }
   .seat-slot:hover {
     transform: none;
   }
   .empty-placeholder {
-    border: none; /* remove borders from empty seats */
+    border: 1px solid black; /* 割り当てのない座席は黒枠を表示 */
     background: transparent !important;
+    border-radius: 0;
   }
   .forced-empty .empty-placeholder {
-    border: none;
+    border: none; /* 指定した空席は完全に非表示 */
+    background: transparent !important;
   }
 }

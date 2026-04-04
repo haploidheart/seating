@@ -109,12 +109,12 @@
   }
   
   .surname-vertical {
-    font-size: 18pt;
+    font-size: 14pt; /* reduced from 18pt */
   }
   
   .firstname-vertical,
   .reading-vertical,
   .number-box {
-    font-size: 8pt;
+    font-size: 7pt; /* reduced from 8pt */
   }
 }

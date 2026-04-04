@@ -19,6 +19,28 @@
   margin-bottom: 0.5rem;
 }
 
+.classroom-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.classroom-input label {
+  white-space: nowrap;
+}
+
+.classroom-input input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: white;
+  padding: 0.5rem;
+  font-size: 1rem;
+  flex: 1;
+}
+
 textarea {
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
@@ -60,6 +82,32 @@ textarea {
   justify-content: center;
   align-items: center;
   gap: 15px;
+  position: relative;
+  padding-top: 40px;
+}
+
+@media print {
+  .seat-chart-area {
+    gap: 5mm; /* reduced gap between title/desk/grid for print */
+    padding-top: 0; /* remove unnecessary padding */
+  }
+}
+
+.classroom-name-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+@media print {
+  .classroom-name-display {
+    color: black;
+    position: static; /* Let it be part of the flow to not overlap */
+    margin-bottom: 5mm;
+  }
 }
 
 .teachers-desk {

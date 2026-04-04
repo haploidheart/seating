@@ -3,6 +3,7 @@ import './App.css'
 import SeatGrid from './components/SeatGrid'
 
 function App() {
+  const [classroomName, setClassroomName] = useState('1年A組')
   const [studentText, setStudentText] = useState(`1,田中,太郎,タナカ,M
 2,鈴木,次郎,スズキ,M
 3,佐藤,三郎,サトウ,M
@@ -37,10 +38,20 @@ function App() {
         <h1>座席表ジェネレーター</h1>
         <div className="input-area glass">
           <p className="instruction">
-            1. 名簿を入力してください（出席番号,姓,名,読み,性別(M/F)）<br />
+            1. 教室名と名簿を入力してください（出席番号,姓,名,読み,性別(M/F)）<br />
             2. 下のグリッドで、<b>座らせたくない場所（空席）をクリック</b>して選択してください。<br />
             3. 「A5サイズで印刷」ボタンで印刷（縦方向）してください。
           </p>
+          <div className="classroom-input">
+            <label htmlFor="classroom-name">教室名：</label>
+            <input 
+              id="classroom-name"
+              type="text" 
+              value={classroomName}
+              onChange={(e) => setClassroomName(e.target.value)}
+              placeholder="例: 1年A組"
+            />
+          </div>
           <textarea 
             value={studentText}
             onChange={(e) => setStudentText(e.target.value)}
@@ -60,6 +71,7 @@ function App() {
       </header>
 
       <main className="seat-chart-area">
+        <div className="classroom-name-display">{classroomName}</div>
         <div className="teachers-desk">教卓</div>
         <SeatGrid 
           students={students} 
