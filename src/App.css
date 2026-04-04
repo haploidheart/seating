@@ -68,7 +68,28 @@ textarea {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  align-self: flex-end;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.secondary-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .print-button:hover {
@@ -83,13 +104,37 @@ textarea {
   align-items: center;
   gap: 15px;
   position: relative;
-  padding-top: 40px;
+  padding: 40px 0; /* Symmetric padding top and bottom */
+  margin-top: 20px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.seat-chart-area.is-flipped {
+  flex-direction: column-reverse; /* Physically swap order */
+}
+
+/* No need to rotate the whole container if we swap directions, 
+   but let's keep the rotation for the grid itself to maintain the left-right orientation */
+.is-flipped .seat-grid {
+  transform: rotate(180deg);
+}
+
+.is-flipped .seat-slot {
+  transform: rotate(180deg);
+}
+
+/* Adjust classroom name position when flipped */
+.is-flipped .classroom-name-display {
+  top: auto;
+  bottom: 0;
 }
 
 @media print {
   .seat-chart-area {
-    gap: 5mm; /* reduced gap between title/desk/grid for print */
-    padding-top: 0; /* remove unnecessary padding */
+    gap: 5mm;
+    padding: 5mm 0; /* Minimal padding for print */
+    margin-top: 0;
+    transition: none;
   }
 }
 

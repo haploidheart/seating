@@ -16,6 +16,7 @@ function App() {
 10,斎藤,洋介,サイトウ,M`)
 
   const [emptySeatIndices, setEmptySeatIndices] = useState([])
+  const [isFlipped, setIsFlipped] = useState(false)
 
   const students = studentText.trim().split('\n').filter(l => l.trim()).map(line => {
     const [id, lastName, firstName, reading, gender] = line.split(',')
@@ -27,6 +28,8 @@ function App() {
       prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     )
   }
+
+  const toggleFlip = () => setIsFlipped(!isFlipped)
 
   // Calculate available seats (7x7 = 49)
   const totalSlots = 49 - emptySeatIndices.length
@@ -64,13 +67,18 @@ function App() {
               ({students.length}名に対して、利用可能座席は{totalSlots}席です)
             </div>
           )}
-          <button onClick={() => window.print()} className="print-button">
-            A5サイズで印刷
-          </button>
+          <div className="button-group">
+            <button onClick={toggleFlip} className="secondary-button">
+              教卓の位置を切り替え ({isFlipped ? '下' : '上'})
+            </button>
+            <button onClick={() => window.print()} className="print-button">
+              A5サイズで印刷
+            </button>
+          </div>
         </div>
       </header>
 
-      <main className="seat-chart-area">
+      <main className={`seat-chart-area ${isFlipped ? 'is-flipped' : ''}`}>
         <div className="classroom-name-display">{classroomName}</div>
         <div className="teachers-desk">教卓</div>
         <SeatGrid 
