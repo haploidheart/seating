@@ -31,3 +31,9 @@
 - `src/components/SeatGrid.jsx`: 7×7グリッドの構築と生徒の割り当てロジック（Column-Major）。
 - `src/components/StudentCard.jsx`: 各座席のカード表示（縦書きスタイル）。
 - `dist/`: 配布用のビルド済みファイル。
+
+```mermaid
+graph LR
+A-->B
+```
+
